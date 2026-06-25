@@ -17,5 +17,11 @@ namespace Portfolio.Controllers
             var about = _context.Abouts.FirstOrDefault();
             return View(about);
         }
+
+        public IActionResult Test()
+        {
+            return View();
+        }
+
     }
 }
