@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Portfolio.Data.Context;
+using Portfolio.Data.Entities;
 
 namespace Portfolio.Controllers
 {
@@ -18,10 +19,22 @@ namespace Portfolio.Controllers
             return View(about);
         }
 
-        public IActionResult Test()
+        [HttpGet]
+        public IActionResult CreateAbout()
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult CreateAbout(About about)
+        {
+            _context.Abouts.Add(about);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+       
+
+       
 
     }
 }
