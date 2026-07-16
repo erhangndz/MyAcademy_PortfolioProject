@@ -15,6 +15,7 @@ namespace Portfolio.Controllers
             _context = context;
         }
 
+        //Eager Loading
         public IActionResult Index()
         {
             var projectTEchStacks = _context.ProjectTechStacks
