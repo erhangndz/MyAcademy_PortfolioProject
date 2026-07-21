@@ -65,5 +65,13 @@ namespace Portfolio.Controllers
             return RedirectToAction("Index", "About");
 
         }
+
+
+        public async Task<IActionResult> Logout()
+        {
+            HttpContext.Session.Remove("fullName");
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Default");
+        }
     }
 }
