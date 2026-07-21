@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NuGet.DependencyResolver;
 using NuGet.Versioning;
 using Portfolio.Data.Context;
 using Portfolio.Data.Entities;
@@ -30,8 +31,17 @@ namespace Portfolio.Controllers
         public IActionResult CreateAbout(About about)
         {
             _context.Abouts.Add(about);
-            _context.SaveChanges();
-            return RedirectToAction("Index");
+           int result =  _context.SaveChanges();
+            if (result > 0)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Hakkımda Bilgisi Eklenemedi.");
+                return View(about);
+            }
+            
         }
 
         public IActionResult UpdateAbout(int id)

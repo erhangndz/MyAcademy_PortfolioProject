@@ -15,6 +15,9 @@
     <label>Görsel Url</label>
     <input type="text" asp-for="ImageUrl" class="form-control" required />
     <br />
+
+    <span class="text-danger">@Html.ValidationSummary()</span>
+
     <button class="btn btn-outline-dark">Kaydet</button>
 </form>
 

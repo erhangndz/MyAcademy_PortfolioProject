@@ -22,6 +22,7 @@ namespace Portfolio.Controllers
         [HttpPost]
         public IActionResult SendMessage(UserMessage userMessage)
         {
+           
             _context.UserMessages.Add(userMessage);
             _context.SaveChanges();
             return NoContent();
