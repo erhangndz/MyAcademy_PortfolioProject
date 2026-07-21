@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Portfolio.Data.Context;
 using Portfolio.Models;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Portfolio.Controllers
 {
+    [AllowAnonymous]
     public class AuthController : Controller
     {
 
@@ -27,6 +29,12 @@ namespace Portfolio.Controllers
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             var admin = _context.Admins.FirstOrDefault(x => x.UserName == model.UserName && x.Password == model.Password);
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
 
             if (admin == null)
             {

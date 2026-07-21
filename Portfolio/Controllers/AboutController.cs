@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NuGet.DependencyResolver;
 using NuGet.Versioning;
 using Portfolio.Data.Context;
@@ -6,6 +7,7 @@ using Portfolio.Data.Entities;
 
 namespace Portfolio.Controllers
 {
+
     public class AboutController : Controller
     {
         private readonly AppDbContext _context;
